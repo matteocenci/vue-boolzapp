@@ -9,9 +9,7 @@
     <link rel="stylesheet" href="./css/tablet.css" media="screen and (max-width: 991px)">
     <link rel="stylesheet" href="./css/mobile.css" media="screen and (max-width: 540px)">
 
-    
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="./js/script.js"></script>
     <title>Boolzapp</title>
 </head>
 <body>
@@ -45,97 +43,14 @@
                     name="search">
             </div>
             <div class="contacts">
-                <div class="contact">
+                <div class="contact" v-for="(user, index) in userList" @click="userIndex = index">
                     <div class="contact-logo">
-                        <img src="./img/avatar_1.jpg" alt="Avatar Michele">
+                        <img :src="user.img" alt="Avatar Michele">
                     </div>
                     <div class="contact-info">
                         <h3>
-                            <span class="contact-name">Michele</span>
+                            <span class="contact-name">{{ user.name }}</span>
                             <span class="time">16:15</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_2.jpg" alt="Avatar Fabio">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Fabio</span>
-                            <span class="time">16:05</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_3.jpg" alt="Avatar Samuele">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Samuele</span>
-                            <span class="time">16:03</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div><div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_4.jpg" alt="Avatar Alessandro B.">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Alessandro B.</span>
-                            <span class="time">15:50</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_5.jpg" alt="Avatar Alessandro L.">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Alessandro L.</span>
-                            <span class="time">15:45</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_6.jpg" alt="Avatar Claudia">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Claudia</span>
-                            <span class="time">15:40</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_7.jpg" alt="Avatar Federico">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Federico</span>
-                            <span class="time">15:22</span>
-                        </h3>
-                        <small>Lorem ipsum dolor sit amet</small>
-                    </div>
-                </div>
-                <div class="contact">
-                    <div class="contact-logo">
-                        <img src="./img/avatar_8.jpg" alt="Avatar Davide">
-                    </div>
-                    <div class="contact-info">
-                        <h3>
-                            <span class="contact-name">Davide</span>
-                            <span class="time">15:15</span>
                         </h3>
                         <small>Lorem ipsum dolor sit amet</small>
                     </div>
@@ -147,8 +62,8 @@
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img src="./img/avatar_1.jpg" alt="">
-                    <h3><span id="header-right-contact-name">Michele</span> <br>
+                    <img :src="userList[userIndex].img" alt="">
+                    <h3><span id="header-right-contact-name">{{ userList[userIndex].name }}</span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
                 </div>
@@ -160,11 +75,9 @@
             </div>
             <div class="right-messages-container">
                 <div class="right-messages">
-                    <div class="message sent">
+                    <div class="message" :class="msg.status" v-for="msg in userList[userIndex].messages">
                         <div class="message-inner">
-                            <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde laboriosam doloremque?
-                            </span>
+                            <span class="message-text">{{ msg.text }}</span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
                                 <div class="message-options-panel">
@@ -174,23 +87,6 @@
                             </div>
                         </div>
                         <span class="message-time">16:13</span>
-                    </div>
-                    <div class="message received">
-                        <div class="message-inner">
-                            <span class="message-text">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat eos blanditiis architecto expedita
-                                aspernatur quasi, et nobis aut officiis soluta voluptates nesciunt voluptate ipsa fuga rerum doloribus, unde
-                                laboriosam doloremque?
-                            </span>
-                            <div class="message-options">
-                                <i class="fa fa-chevron-down"></i>
-                                <div class="message-options-panel">
-                                    <div class="message-info">Info messaggio</div>
-                                    <div class="message-destroy">Cancella messaggio</div>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="message-time">16:15</span>
                     </div>
                 </div>
             </div>
@@ -207,6 +103,7 @@
         <!-- /contenitore dx -->
     </div>
 
-    
+    <script src="./js/users.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>

@@ -3,7 +3,7 @@ console.log(Vue);
 const globalUsersList = [
     {
         name: 'Michele',
-        text: 'img/avatar_1.jpg',
+        img: 'img/avatar_1.jpg',
         visible: true,
         messages: [
             {
@@ -25,7 +25,7 @@ const globalUsersList = [
     },
     {
         name: 'Fabio',
-        text: 'img/avatar_2.jpg',
+        img: 'img/avatar_2.jpg',
         visible: true,
         messages: [
             {
@@ -47,7 +47,7 @@ const globalUsersList = [
     },
     {
         name: 'Samuele',
-        text: 'img/avatar_3.jpg',
+        img: 'img/avatar_3.jpg',
         visible: true,
         messages: [
             {
@@ -69,7 +69,7 @@ const globalUsersList = [
     },
     {
         name: 'Alessandro B.',
-        text: 'img/avatar_4.jpg',
+        img: 'img/avatar_4.jpg',
         visible: true,
         messages: [
             {
@@ -86,7 +86,7 @@ const globalUsersList = [
     },
     {
         name: 'Alessandro L.',
-        text: 'img/avatar_5.jpg',
+        img: 'img/avatar_5.jpg',
         visible: true,
         messages: [
             {
@@ -103,7 +103,7 @@ const globalUsersList = [
     },
     {
         name: 'Claudia',
-        text: 'img/avatar_6.jpg',
+        img: 'img/avatar_6.jpg',
         visible: true,
         messages: [
             {
@@ -125,7 +125,7 @@ const globalUsersList = [
     },
     {
         name: 'Federico',
-        text: 'img/avatar_7.jpg',
+        img: 'img/avatar_7.jpg',
         visible: true,
         messages: [
             {
@@ -143,7 +143,7 @@ const globalUsersList = [
     },
     {
         name: 'Davide',
-        text: 'img/avatar_8.jpg',
+        img: 'img/avatar_8.jpg',
         visible: true,
         messages: [
             {
