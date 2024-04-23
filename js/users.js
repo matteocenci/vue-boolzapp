@@ -1,4 +1,6 @@
 console.log(Vue);
+// const  message = {date: '', text: newMsg, status: sent}
+// globalUsersList[0].messages.push(message)
 
 const globalUsersList = [
     {
