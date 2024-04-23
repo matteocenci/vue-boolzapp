@@ -8,7 +8,18 @@ const app = Vue.createApp({
             newMsg:''
         }
     },
+    computed: {
+        searchedChat () {
+            return this.userList.filter((element)=> {
+                return element.name.toLowerCase().startsWith(this.searchInput.toLowerCase())
+            })
+        }
+    },
     methods: {
+        selectedContact(contact) {
+            return this.selectedUser=contact
+        },
+
         sendMsg () {
             const message = {date: '', text: this.newMsg, status: 'sent'};
             this.userList[this.userIndex].messages.push(message);
@@ -20,5 +31,12 @@ const app = Vue.createApp({
                 
             }, 1000)
         },
+
+        deleteMsg: function(index) {
+            console.log("tic");
+            this.userList[this.userIndex].messages.splice(index, 1);
+        }
     }
+
+
 }).mount('#app');

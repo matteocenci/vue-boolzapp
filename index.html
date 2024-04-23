@@ -39,11 +39,11 @@
                 <label class="search-label" for="search">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </label>
-                <input id="contacts-filter" class="left-searchbar-input" placeholder="Cerca o inizia una nuova chat"
+                <input id="contacts-filter" v-model="searchInput" class="left-searchbar-input" placeholder="Cerca o inizia una nuova chat"
                     name="search">
             </div>
             <div class="contacts">
-                <div class="contact" v-for="(user, index) in userList" @click="userIndex = index">
+                <div class="contact" v-for="(user, index) in searchedChat" @click="userIndex = index">
                     <div class="contact-logo">
                         <img :src="user.img" alt="Avatar Michele">
                     </div>
@@ -62,8 +62,8 @@
         <div class="right">
             <div class="header-right">
                 <div class="header-right-logo">
-                    <img :src="userList[userIndex].img" alt="">
-                    <h3><span id="header-right-contact-name">{{ userList[userIndex].name }}</span> <br>
+                    <img :src="searchedChat[userIndex].img" alt="">
+                    <h3><span id="header-right-contact-name">{{ searchedChat[userIndex].name }}</span> <br>
                         <small class="time">Ultimo accesso oggi alle 16:26</small>
                     </h3>
                 </div>
@@ -75,14 +75,14 @@
             </div>
             <div class="right-messages-container">
                 <div class="right-messages">
-                    <div class="message" :class="msg.status" v-for="msg in userList[userIndex].messages">
+                    <div class="message" :class="msg.status" v-for="(msg, i) in searchedChat[userIndex].messages">
                         <div class="message-inner">
                             <span class="message-text">{{ msg.text }}</span>
                             <div class="message-options">
                                 <i class="fa fa-chevron-down"></i>
                                 <div class="message-options-panel">
                                     <div class="message-info">Info messaggio</div>
-                                    <div class="message-destroy">Cancella messaggio</div>
+                                    <div class="message-destroy" @click= "deleteMsg(i)">Cancella messaggio</div>
                                 </div>
                             </div>
                         </div>
